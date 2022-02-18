@@ -1,4 +1,4 @@
-package etg.example.demo.services;
+package etg.example.demo.unit.services;
 
 import etg.example.demo.dto.TokenDto;
 import etg.example.demo.models.Token;
@@ -15,7 +15,7 @@ public class TokenService {
     @Autowired
     private ITokenRepository tokenRepository;
 
-    public Optional<Token> getById(long id) {
+    public Optional<Token> getById(int id) {
 
         java.util.Optional<Token> token =  tokenRepository.findById(id);
 

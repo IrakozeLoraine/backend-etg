@@ -1,8 +1,8 @@
-package etg.example.demo.controllers;
+package etg.example.demo.unit.controllers;
 
 import etg.example.demo.dto.TokenDto;
 import etg.example.demo.models.Token;
-import etg.example.demo.services.TokenService;
+import etg.example.demo.unit.services.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class TokenController {
     private TokenService tokenService;
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<?> getById(@PathVariable(name = "id") long id) {
+    public ResponseEntity<?> getById(@PathVariable(name = "id") int id) {
 
         Optional<Token> token = tokenService.getById(id);
 

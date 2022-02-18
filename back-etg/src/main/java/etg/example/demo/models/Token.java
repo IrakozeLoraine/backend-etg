@@ -16,7 +16,7 @@ import java.util.Date;
 public class Token {
     @Id
     @Column(name = "id")
-    private Long id;
+    private int id;
 
     @Column(name = "amount")
     private Number amount;
@@ -29,4 +29,10 @@ public class Token {
 
     @CreatedDate()
     private Date createdAt;
+
+    public Token(Number amount, Number meter, boolean tokenStatus) {
+        this.amount = amount;
+        this.meter = meter;
+        this.tokenStatus = tokenStatus;
+    }
 }
