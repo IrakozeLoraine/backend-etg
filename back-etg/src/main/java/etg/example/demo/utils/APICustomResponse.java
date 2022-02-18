@@ -1,4 +1,6 @@
-package utils;
+package etg.example.demo.utils;
+
+import etg.example.demo.models.Token;
 
 public class APICustomResponse {
 
@@ -7,7 +9,7 @@ public class APICustomResponse {
     private String message;
 
 
-    public APICustomResponse() {
+    public APICustomResponse(boolean b, String electricity_generated_successfully, Token token) {
         super();
     }
 

@@ -1,13 +1,11 @@
 package etg.example.demo.models;
 
-import lombok.AllArgsConstructor;
+import etg.example.demo.enums.ETokenStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
+import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,24 +13,27 @@ import java.util.Date;
 @Table(name="tokens")
 public class Token {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private int id;
+    private Long id;
+
+//    @Max(8)
+//    @Min(8)
+    @Column(name = "value", nullable = false, unique = true)
+    private Integer value;
+
+    @Column(name = "duration", nullable = false, unique = true)
+    private Integer duration;
 
     @Column(name = "amount")
-    private Number amount;
+    private Integer amount;
 
-    @Column(name = "meter")
-    private Number meter;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status")
+    private ETokenStatus status = ETokenStatus.USED;
 
-    @Column(name = "token_status")
-    private boolean tokenStatus;
+    @ManyToOne
+    @JoinColumn(name = "meter_id")
+    private Meter meter;
 
-    @CreatedDate()
-    private Date createdAt;
-
-    public Token(Number amount, Number meter, boolean tokenStatus) {
-        this.amount = amount;
-        this.meter = meter;
-        this.tokenStatus = tokenStatus;
-    }
 }
